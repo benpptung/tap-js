@@ -5,7 +5,6 @@
 
     var attachDeviceEvent, init, handlers, deviceEvents,
         coords = {};
-    var inited;
 
     attachDeviceEvent = function( eventName ) {
         return utils.attachEvent( document.documentElement, deviceEvents[ eventName ], handlers[ eventName ] );
@@ -62,10 +61,6 @@
     };
 
     init = function() {
-
-        if (inited) return;
-        inited = true;
-
         var i = 0;
 
         for ( ; i < eventMatrix.length; i++ ) {
@@ -83,7 +78,10 @@
         return utils.attachEvent( document.documentElement, 'click', handlers[ 'click' ] );
     };
 
-    utils.attachEvent( window, 'load', init );
+    if (!window.tapjsInited) {
+      utils.attachEvent( window, 'load', init );
+      window.tapjsInited = true;
+    }
 
     /*if (typeof define === 'function' && define.amd) {
         define(function () {
