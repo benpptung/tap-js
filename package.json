@@ -1,7 +1,7 @@
 {
   "name": "tap-js",
   "version": "1.0.7",
-  "main": "dist/tap.js",
+  "main": "dist/tap-js.min.js",
   "devDependencies": {
     "appstackr": "^0.3.13",
     "grunt": "latest",
